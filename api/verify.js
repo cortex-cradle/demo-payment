@@ -17,4 +17,4 @@ export default async function handler(req, res) {
   } else {
     return res.status(200).json({ status: "FAILED" });
   }
-}
+} 
