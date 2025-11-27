@@ -11,9 +11,25 @@
 
 <script>
 async function pay() {
-    const res = await fetch("/api/create-order", { method: "POST" });
-    const data = await res.json();
-    window.location.href = data.payment_link;
+    try {
+        const res = await fetch("/api/create-order", { 
+            method: "POST"
+        });
+
+        const data = await res.json();
+        
+        if (!data.payment_link) {
+            alert("Error: payment link missing");
+            console.log(data);
+            return;
+        }
+
+        window.location.href = data.payment_link;
+
+    } catch (err) {
+        console.error(err);
+        alert("Something went wrong");
+    }
 }
 </script>
 
