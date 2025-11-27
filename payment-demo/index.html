@@ -11,7 +11,7 @@
 
 <script>
 async function pay() {
-  const res = await fetch("https://YOUR_VERCEL_APP.vercel.app/api/create-order");
+  const res = await fetch("https://demo-payment-iota.vercel.app/api/create-order");
   const data = await res.json();
   window.location.href = data.payment_link;
 }
