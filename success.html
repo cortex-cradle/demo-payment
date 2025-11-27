@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checking Payment</title>
+</head>
+<body>
+
+<h2>Verifying Payment...</h2>
+
+<div id="box" style="display:none;">
+  <h3>Payment Successful</h3>
+  <a href="product.pdf" download>Download Now</a>
+</div>
+
+<script>
+const params = new URL(window.location.href).searchParams;
+const order_id = params.get("order_id");
+
+fetch(`https://demo-payment-iota.vercel.app/api/verify?order_id=${order_id}`)
+  .then(r => r.json())
+  .then(d => {
+    if (d.status === "SUCCESS") {
+      document.getElementById("box").style.display = "block";
+    } else {
+      document.body.innerHTML = "<h2>Payment Failed</h2>";
+    }
+  });
+</script>
+
+</body>
+</html>
