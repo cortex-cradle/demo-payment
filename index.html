@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo Payment</title>
+</head>
+<body>
+
+<h2>Buy Product - ₹49</h2>
+
+<button id="payBtn">Pay Now</button>
+
+<script>
+  document.getElementById("payBtn").onclick = async () => {
+    // ORDER ID random generate
+    const orderId = "ORDER_" + Date.now();
+
+    // Payment link create request
+    const res = await fetch("https://sandbox.cashfree.com/pg/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-client-id": "YOUR_APP_ID",
+        "x-client-secret": "YOUR_SECRET_KEY",
+        "x-api-version": "2022-09-01"
+      },
+      body: JSON.stringify({
+        order_id: orderId,
+        order_amount: 49,
+        order_currency: "INR",
+        customer_details: {
+          customer_id: "CUST123",
+          customer_email: "test@test.com",
+          customer_phone: "9999999999"
+        },
+        order_meta: {
+          return_url: "https://YOUR_USERNAME.github.io/REPO_NAME/success.html?order_id={order_id}"
+        }
+      })
+    });
+
+    const data = await res.json();
+    window.location.href = data.payment_link;
+  };
+</script>
+
+</body>
+</html>
 
