@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Payment Demo</title>
+    <title>Payment Demo</title>
 </head>
 <body>
 
@@ -11,9 +11,9 @@
 
 <script>
 async function pay() {
-  const res = await fetch("/api/create-order", { method: "POST");
-  const data = await res.json();
-  window.location.href = data.payment_link;
+    const res = await fetch("/api/create-order", { method: "POST" });
+    const data = await res.json();
+    window.location.href = data.payment_link;
 }
 </script>
 
