@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         return_url: "https://cortex-cradle.github.io/demo-payment/success.html?order_id={order_id}"
       }
     })
-  });
+  }); 
 
   const data = await response.json();
   res.status(200).json({ payment_link: data.payment_link });
