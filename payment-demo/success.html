@@ -16,7 +16,7 @@
 const params = new URL(window.location.href).searchParams;
 const order_id = params.get("order_id");
 
-fetch(`https://YOUR_VERCEL_APP.vercel.app/api/verify?order_id=${order_id}`)
+fetch(`https://demo-payment-iota.vercel.app/api/verify?order_id=${order_id}`)
   .then(r => r.json())
   .then(d => {
     if (d.status === "SUCCESS") {
