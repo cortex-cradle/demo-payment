@@ -11,7 +11,7 @@
 
 <script>
 async function pay() {
-  const res = await fetch("https://demo-payment-loxji6t17-intregations-projects.vercel.app/api/create-order");
+  const res = await fetch("/api/create-order", { method: "POST");
   const data = await res.json();
   window.location.href = data.payment_link;
 }
