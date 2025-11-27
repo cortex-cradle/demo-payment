@@ -25,7 +25,7 @@ export default async function handler(req, res) {
           customer_phone: "9999999999",
         },
         order_meta: {
-          return_url: `${req.headers.host}/success.html?order_id={order_id}`,
+          return_url: `https://${req.headers.host}/success.html?order_id=${order_id}`,
         },
       }),
     });
